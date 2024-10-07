@@ -46,5 +46,5 @@ url <- "https://docs.google.com/spreadsheets/d/15r7ZwcZZHbEgltlF6gSFvCTFA-CFzVBW
 gs <- as_sheets_id(url)
 
 fb <- googlesheets4::range_read(ss = gs, sheet = "fb")
-
-
+install.packages("agricolae")
+library("agricolae")
