@@ -164,7 +164,7 @@ anova(modelo)
 plot(modelo)
 ```
 
-## Comparacion de medias con Tukey con chat GPT
+## Comparacion de medias con Tukey con Agricolae 
 ### Comparacion de medias de tukey (riego )
 ```{r}
 library(agricolae)
@@ -173,7 +173,7 @@ print(tukey_riego)
 plot(tukey_riego)
 ```
 
-### Comparacion de medias de tukey (geno )
+### Comparacion de medias con tukey (geno )
 
 ```{r}
 tukey_geno <- HSD.test(modelo, "geno", group = TRUE)
@@ -208,6 +208,82 @@ ggplot(grupos, aes(x = geno, y = lfa, fill = riego)) +
   scale_fill_discrete(name = "Riego") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+### Letras dentro de la grafica 
+```{r}
+ggplot(grupos, aes(x = geno, y = lfa, fill = riego)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = groups), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, 
+            size = 3) +  
+  labs(title = "Efecto de Geno y Riego en LFA",
+       x = "Genotipo",
+       y = "LFA") +
+  theme_minimal() +
+  scale_fill_discrete(name = "Riego") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
 
+# Comparacion de medias con: emmeans 
+## Modelo mixto de hi
 
+```{r}
+source('https://inkaverse.com/setup.r')
+library(emmeans)
+library(multcomp)
+library(multcompView)
+
+modelo <- lme4::lmer(lfa ~ riego * geno + (1 | bloque), data = fb)
+
+anova(modelo)
+
+cm1 <- emmeans(modelo , ~  geno | riego) %>% 
+  cld(Letters = letters, reversed = T )
+cm1
+
+cm2 <- emmeans(modelo , ~  riego | geno) %>% 
+  cld(Letters = letters, reversed = T )
+cm2
+
+cm3 <- emmeans(modelo , ~  riego * geno)%>% 
+  cld(Letters = letters, reversed = T )
+cm3
+
+```
+
+### Grafica 
+```{r}
+library(ggplot2)
+dtcm <- as.data.frame(cm1) %>% 
+  rename(sig = ".group")
+
+ggplot(dtcm, aes(x = geno, y = emmean, fill = riego)) +
+  geom_bar(stat = "identity", position = "dodge", color =
+             "black") +
+  geom_text(aes(label = sig, y = emmean),
+            position = position_dodge(width = 0.9),
+            vjust = 0) +
+  labs(x = "Genotipo", y = "HI", fill = "Riego") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Gráfico de barras: HI por genotipo y riego")
+```
+
+###Grafica 2
+```{r}
+library(ggplot2)
+library(emmeans)
+modelo <- lm(lfa ~ bloque + riego + geno + riego * geno, data = fb)
+cm1 <- emmeans(modelo, ~ geno | riego)
+cm1_df <- as.data.frame(cm1)
+ggplot(cm1_df, aes(x = geno, y = emmean, color = riego, group = riego)) +
+  geom_line() +
+  geom_point(size = 3) +  
+  geom_text(aes(label = round(emmean, 2)),  
+            vjust = -0.5, size = 3.5) +  
+  labs(x = "Genotipo", y = "Media marginal ajustada", color = "Riego") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Medias marginales ajustadas por genotipo y riego")
+```
 
