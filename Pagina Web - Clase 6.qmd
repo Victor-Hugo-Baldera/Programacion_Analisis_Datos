@@ -19,7 +19,9 @@ Quarto enables you to weave together content and executable code into a finished
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
+
 1 + 1
+
 ```
 
 You can add options to executable code like this 
@@ -76,6 +78,7 @@ str(fb)
 
 
 ## Modelo lineal lfa
+
 
 ```{r}
 modelo <- aov(formula = lfa ~  bloque + riego + geno + riego*geno
@@ -139,6 +142,7 @@ anova(model)
 plot(modelo)
 
 ol <- boxplot(lfa ~ riego * geno, fb)
+
 ol
 
 ```

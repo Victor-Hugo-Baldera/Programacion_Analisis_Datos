@@ -1,0 +1,603 @@
+---
+title: "EFICIENCIA DE USO DE AGUA EN QUINCE GENOTIPOS DE PAPA (Solanum tuberosum L.) BAJO CONDICIONES DE ESTRÉS HÍDRICO POR SEQUÍA"
+author: "Grupo C"
+format:
+  html:
+    toc: true
+    toc-location: left
+    number-sections: true
+    embed-resources: true
+    output-file: index
+---
+```{r}
+
+```
+
+# Resumen 
+
+# Introducción
+
+# Marco teórico 
+
+# Materiales 
+
+## Lugar de ejecución
+
+El experimento se realizó en el invernadero 10 A del Centro Internacional de la Papa (CIP), ubicado en Lima, Perú. Este lugar ofrece un entorno controlado ideal para la investigación en cultivos sensibles al estrés hídrico, como la papa. Situado a una altitud de 244 metros sobre el nivel del mar, el invernadero permitió simular condiciones de sequía sin variabilidad externa, proporcionando un control riguroso sobre variables críticas como temperatura, humedad y régimen de riego.
+```{r}
+library(knitr)
+knitr::include_graphics("C:/Users/HP/OneDrive/Documentos/INGENERIA AGRONOMA/Ingenieria Agronoma VIII/PROGRAMACIÓN Y ANÁLISIS DE DATOS/UNIDAD II/LG.png")
+echo=FALSE 
+
+```
+
+Este tipo de entorno es clave en estudios de estrés abiótico porque permite observar respuestas fisiológicas y morfológicas en las plantas sin interferencia de factores externos no controlados. Las temperaturas promedio máximas y mínimas dentro del invernadero, de 24 °C y 15 °C respectivamente, junto con una humedad relativa del 80%, crearon un ambiente estable que facilitará el monitoreo preciso de las respuestas de las plantas y la evaluación de la eficiencia. en el uso del agua (EUA). Además, el CIP es un referente global en investigación en papa, lo que garantiza un acceso a infraestructura y metodologías avanzadas para el análisis de cultivos bajo estrés hídrico.
+
+## Descripción de las variables
+
+**Peso seco de las hojas (g):** El peso seco de las hojas es una medida de la biomasa acumulada en este órgano tras la eliminación de su contenido de agua tras someterlas a un proceso de secado en estufa a 80 °C durante tres días. Este parámetro es clave porque las hojas son el principal órgano fotosintético y, en condiciones de estrés hídrico, una mayor biomasa foliar puede relacionarse tanto con la eficiencia fotosintética como con la resistencia a la sequía. Sin embargo, un exceso de biomasa foliar también puede incrementar la transpiración, lo que en condiciones de baja disponibilidad de agua puede ser desventajoso.
+
+En el estudio, los valores de peso seco de las hojas variaron significativamente entre los genotipos y entre los tratamientos de riego y sequía regulada. 
+
+**Condiciones de riego:** Genotipos como CIP398098.119 presentaron mayores valores de peso seco en riego, lo cual indica un buen desarrollo foliar bajo condiciones de disponibilidad de agua, promoviendo una alta capacidad fotosintética y crecimiento.
+
+**Condiciones de sequía:** En condiciones de sequía, el peso seco de las hojas disminuyó significativamente en varios genotipos, excepto en los más adaptados, como CIP392797.22, que mantuvo valores estables. Este comportamiento refleja una estrategia adaptativa para reducir la transpiración en un ambiente con limitación hídricaetación: Los genotipos que mantienen su biomasa foliar bajo estrés pueden aprovechar una mayor capacidad fotosintética sin comprometer su capacidad hídrica, una ventaja que los hace candidatos ideales para zonas con estrés hídrico intermitente.
+
+**Peso seco de la raíz (g):** El peso seco de la raíz representa la biomasa acumulada en las raíces tras el secado, proporcionando información valiosa sobre el sistema de anclaje y absorción de agua y nutrientes de la planta. En cultivos como la papa, donde el sistema radical es naturalmente poco profundo, un mayor desarrollo radicular puede representar una ventaja adaptativa en situaciones de estrés hídrico, permitiendo que la planta acceda a reservas hídricas a mayor profundidad o aproveche de manera más efectiva la humedad limitada. .
+
+En el experimento, los genotipos que presentaron un peso seco de raíz más alto en condiciones de sequía, como CIP392797.22, se destacan por su capacidad de sostener el desarrollo radicular incluso bajo condiciones adversas. Esto puede interpretarse como una estrategia de adaptación mediante el ajuste osmótico y la inversión en biomasa radicular, lo que favorece la absorción en suelos de baja humedad.
+
+Condiciones de riego y sequía : Los genotipos como CIP398098.119 y CIP397077.16 muestran incrementos en biomasa radicular bajo sequía, lo cual indica un ajuste osmótico y una mayor eficiencia en la búsqueda de agua en el suelo. En cambio, otros genotipos como CIP720088 presentaron una reducción en el peso seco de la raíz, mostrando limitaciones adaptativas frente al estrés hídrico.
+
+**Peso seco del tubérculo (g):** El peso seco del tubérculo es una medida clave del rendimiento en el cultivo de papa, ya que representa la masa de los tubérculos tras eliminar el contenido de agua. Este valor permite evaluar directamente la eficiencia en la producción de biomasa de la planta y es fundamental para determinar el rendimiento en diferentes condiciones de riego. Dado que el tubérculo es el órgano de almacenamiento de nutrientes y el producto final cosechado, una masa seca adecuada bajo estrés hídrico indica que el genotipo ha mantenido su productividad a pesar de la limitación de agua. En condiciones de sequía, el rendimiento se reduce considerablemente debido a la menor disponibilidad de agua para los procesos de translocación y expansión celular en los tubérculos. Sin embargo, los genotipos que mantuvieron altos niveles de biomasa en los tubérculos bajo estrés indican una mayor eficiencia en el uso de los recursos disponibles y una potencial tolerancia al estrés hídrico. Para los productores, esta variable ayuda a identificar variedades de papa que mantendrán un rendimiento económico aceptable incluso en escenarios de riego limitado, ofreciendo una alternativa más sostenible en regiones con problemas de disponibilidad de agua.
+
+Los valores de peso seco de los tubérculos entre los tratamientos de riego y sequía muestran una variabilidad importante:
+En riego, genotipos como CIP398208.620 lograron un alto peso seco en tubérculo, lo que indica un buen rendimiento en condiciones óptimas.
+
+**En condiciones de sequía:** Bajo estrés, el rendimiento disminuyó notablemente en la mayoría de los genotipos, pero algunos, como CIP392797.22, lograron sostener valores aceptables de peso seco en los tubérculos, lo cual es prometedor para la selección en programas de mejora.
+
+**Interpretación:** Mantener un rendimiento relativamente alto en condiciones de sequía muestran una buena eficiencia en el uso de los recursos disponibles, un factor crucial para el desarrollo de variedades tolerantes al estrés hídrico en papa.
+
+**Transpiración total (l):** La transpiración total se calcula mediante la diferencia en el peso de las macetas antes y después del riego, tomando en cuenta la cantidad de agua añadida. Este valor representa la cantidad total de agua perdida por la planta a través de la transpiración y es crucial en estudios de sequía para evaluar cómo las plantas gestionan el uso de agua. La transpiración está directamente relacionada con la capacidad de la planta para regular su temperatura y facilitar el transporte de nutrientes desde las raíces a las hojas. Sin embargo, en condiciones de sequía, una alta transpiración puede ser desventajosa al agotar rápidamente el agua disponible en el suelo. En este contexto, la transpiración total permite identificar genotipos que tienen mecanismos fisiológicos para moderar la pérdida de agua, tales como un cierre estomático eficiente o un ajuste en el área foliar. Genotipos que muestran una transpiración moderada bajo estrés hídrico suelen tener una mayor eficiencia en el uso del agua, lo que es favorable para la selección de cultivares adaptados a climas áridos o regiones donde el riego es limitado.
+
+Del estudio, se observaron diferencias en los valores de transpiración total entre genotipos y tratamientos. Genotipos como el CIP398098.119, que presenta una alta transpiración en condiciones de riego y una regulación más baja en sequía, indican una adaptación óptima al estrés, utilizando un enfoque de “derroche” de agua en condiciones favorables y “ahorro” bajo estrés. Este comportamiento es ventajoso, ya que permite un crecimiento vigoroso en ambientes húmedos y una adaptación rápida cuando el agua es limitada.
+
+**Condiciones de riego:** Los genotipos CIP398098.119 y CIP398208.219 presentaron altos niveles de transpiración bajo riego, lo cual refleja su capacidad de aprovechar el agua cuando está disponible.
+
+**Condiciones de sequía:** En estrés hídrico, la transpiración disminuyó en todos los genotipos, siendo notable en CIP720088, que tuvo una reducción considerable. Este comportamiento es una estrategia para minimizar la pérdida de agua y conservar el recurso en condiciones limitadas.
+
+**Eficiencia del uso del agua (g/l):** La eficiencia en el uso del agua es una medida de la cantidad de biomasa o peso seco de tubérculos que produce la planta por cada litro de agua consumida. Este parámetro es crítico en la agricultura sostenible y es especialmente relevante en el contexto de sequía, donde se necesita maximizar la producción con la menor cantidad de agua posible. En este estudio, se la calcula específicamente para el rendimiento de los tubérculos y para la biomasa total, proporcionando una visión integral de qué tan eficientemente cada genotipo convierte el agua en rendimiento útil. Este, es un criterio clave para identificar genotipos que no solo sobreviven al estrés hídrico, sino que mantienen una productividad óptima. En la práctica agronómica, seleccionar cultivares con alta eficiencia en el uso del agua permite reducir la dependencia del riego, disminuyendo costos y haciendo el cultivo de papa más viable en regiones de escasez hídrica. Además, una alta eficiencia del uso del agua es indicativa de genotipos con adaptaciones morfofisiológicas, como la regulación estomática y una mejor relación entre área foliar y transpiración, que optimizan la fotosíntesis y minimizan la pérdida de agua.
+
+Los valores de eficiencia en el uso del agua en el estudio, revelaron que genotipos como CIP398190.89 y CIP397077.16 presentaron altos niveles de eficiencia bajo condiciones de sequía. Este resultado sugiere que estos genotipos poseen características fisiológicas que maximizan la productividad por unidad de agua, probablemente a través de la regulación estomática, la optimización de la fotosíntesis y una alta retención de biomasa en órganos productivos. Estos genotipos serán excelentes candidatos en programas de mejora para zonas afectadas por el cambio climático, donde la eficiencia hídrica es prioritaria.
+
+**Condiciones de riego:** En riego, los genotipos presentan valores más bajos de eficiencia en el uso del agua, ya que no se limita la disponibilidad de agua, son , genotipos como CIP397077.16 que alcanzaron una eficiencia de 12.51 g/l, destacando como uno de los más eficientes.
+
+**Condiciones de Sequía:** En estrés hídrico, los valores de eficiencia en el uso del agua incrementaron en genotipos como CIP392797.22 (12.04 g/l), lo cual muestra su capacidad de mantener rendimiento a pesar de la limitación de agua, maximizando cada litro consumido.
+
+
+**Conclusión comparativa de variables**
+
+Los valores obtenidos para cada variable ofrecen una visión completa sobre la adaptabilidad de los genotipos de papa en condiciones de estrés hídrico. Los genotipos CIP392797.22 y CIP398098.119 mostraron características sobresalientes en términos de retención de biomasa foliar, desarrollo radicular, rendimiento en tubérculos y eficiencia del uso del agua, lo cual indica una alta tolerancia al estrés y eficiencia en el aprovechamiento de recursos hídricos. Lo que resulta ser información fundamental para los programas de mejoramiento genético de papa, ya que permite identificar los genotipos más adecuados para entornos con disponibilidad de agua limitada, promoviendo así una agricultura resiliente al cambio climático.
+
+
+# Métodos
+
+## Desinfección de materiales
+
+Se desinfectaron macetas, tutores de bambú y mallas plásticas sumergiéndolos en una solución de 30 g de hipoclorito de calcio en 120 L de agua. Luego, se enjuagaron y secaron.
+
+## Preparación de sustrato
+
+Se utilizó una mezcla de sustrato SOGEMIX SM-2 (75% musgo de turba, perlita, vermiculita y piedra caliza) con tierra de Huancayo, desinfectada con vapor a 100 °C por 8 horas y enfriada 48 horas. Cada maceta recibió 2 kg de sustrato y fertilización fraccionada (170-60-270) al inicio y a los 40 días después de la siembra.
+
+## Siembra de tubérculos
+
+Los tubérculos fueron tratados con RTNDJTE (200 ml) en una cámara sellada por 72 horas para romper la dormancia. Luego, se llevaron a cámara de luz difusa para suberificar las yemas y proceder a sembrar.
+
+## Tratamiento de riego
+
+Las plantas se regaron interdiariamente hasta el tratamiento. A los 30 DDS, se saturaron las macetas, drenando durante la noche y sellándolas con bolsas de polietileno. A los 45 DDS, se inició la sequía regulada con la metodología de lisímetro, reduciendo 150 ml de agua por riego y ajustando el riego normal.
+
+Las macetas se dividieron en dos tratamientos:
+
+**a) Riego normal**, aplicando agua según la evapotranspiración y manteniendo capacidad de campo. 
+
+**b) Sequía controlada**, reduciendo gradualmente el agua hasta alcanzar un 20% de transpiración normalizada antes de la cosecha final.
+
+## Diseño y análisis estadístico
+
+El diseño experimental utilizado fue de Parcelas Divididas (Adecuado para características de evaluación). La unidad experimental fue de una planta y/o macetas, fueron dos factores analizados: Genotipo de la papa (consta de 13 clones y 2 variedades de papa) y tipos de riego (Riego normal y sequía controlada). Fueron 5 Unidades experimentales por tratamiento, distribuidas al azar.
+```{r}
+library(knitr)
+knitr::include_graphics("C:\\Users\\HP\\OneDrive\\Documentos\\INGENERIA AGRONOMA\\Ingenieria Agronoma VIII\\PROGRAMACIÓN Y ANÁLISIS DE DATOS\\UNIDAD II\\DE.png")
+
+```
+
+_Distribución espacial del experimento con el diseño de parcelas divididas dentro del invernadero_
+
+## Análisis de Datos 
+
+Los datos procesados y analizados en el software Estadístico R c.3.0.3. Se usó el paquete “car” para detectar valores atípicos. El paquete Agricolae para Analisis de varianza (ANVA) y correlación de Pearson, Con el “FacorMineR” se hizo el análisis de componentes principales. Con el Software estadístico “GraphPad Prism 6 se realizó el análisis de regresión lineal y figuras.
+
+# Resultados 
+```{r}
+source('https://inkaverse.com/setup.r')
+
+url <- "https://docs.google.com/spreadsheets/d/15r7ZwcZZHbEgltlF6gSFvCTFA-CFzVBWwg3mFlRyKPs/edit?gid=172957346#gid=172957346"
+
+gs <- url %>% 
+  as_sheets_id()
+
+fb <- gs %>% 
+  range_read("fb")
+
+
+str(fb)
+```
+
+**Variables evaluadas en el experimento**
+
+## Peso seco de las hojas (g)
+
+### Modelo lineal de leafdw
+
+**ANOVA**
+
+```{r}
+modelo <- aov(formula = leafdw ~  bloque + riego + geno + riego*geno
+          , data = fb)
+
+anova(modelo)
+```
+**Prueba de normalidad**
+```{r}
+plot(modelo)
+```
+
+**Interacción de niveles de riego y Geno**
+```{r}
+library(ggplot2)
+ggplot(fb, aes(x = geno, y = leafdw, colour = riego)) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 16, outlier.size = 2) +
+  labs(title = "Boxplot con interacción de niveles de riego y genotipo",
+       x = "Interacción Riego y Genotipo",
+       y = "Peso seco de las hojas (g)")
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
+```
+
+### Modelo lineal mixto 
+```{r}
+library(lme4)
+
+library(lmerTest)
+
+model <- lme4::lmer(formula = leafdw ~ riego * geno + (1|bloque), data = fb)
+anova(model)
+
+```
+**Prueba de normalida**
+```{r}
+plot(modelo)
+```
+**Eliminación de datos atípicos**
+```{r}
+ol <- boxplot(leafdw ~ riego * geno, fb)
+
+ol
+```
+
+```{r}
+library(inti)
+
+model <- remove_outliers(data = fb
+                             , formula = leafdw ~ riego * geno + (1|bloque)
+                         , plot_diag = T)
+model
+```
+
+**Comparación de medias** 
+
+```{r}
+library(agricolae)
+library(tidyverse)
+tukey_interaccion <- HSD.test(modelo, c("riego","geno"), group = TRUE)
+print(tukey_interaccion)
+plot(tukey_interaccion)
+
+str(tukey_interaccion)
+
+grupos <- tukey_interaccion$groups %>% 
+  rownames_to_column("Tratamientos") %>% 
+  separate("Tratamientos", into = c("riego","geno"))
+
+str(grupos)
+```
+
+```{r}
+ggplot(grupos, aes(x = geno, y = leafdw, fill = riego)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = groups), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, 
+            size = 3) +  
+  labs(title = "Efecto de Geno y Riego en LEAFDW",
+       x = "Genotipo",
+       y = "LEAFDW") +
+  theme_minimal() +
+  scale_fill_discrete(name = "Riego") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+## Peso seco de la raíz (g)
+
+### Modelo lineal de rootdw
+
+**ANOVA**
+
+```{r}
+modelo <- aov(formula = rootdw ~  bloque + riego + geno + riego*geno
+          , data = fb)
+
+anova(modelo)
+```
+**Prueba de normalidad**
+```{r}
+plot(modelo)
+```
+
+**Interacción de niveles de riego y Geno**
+```{r}
+library(ggplot2)
+ggplot(fb, aes(x = geno, y = rootdw, colour = riego)) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 16, outlier.size = 2) +
+  labs(title = "Boxplot con interacción de niveles de riego y genotipo",
+       x = "Interacción Riego y Genotipo",
+       y = "Peso seco de la raíz (g)")
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
+```
+
+### Modelo lineal mixto 
+```{r}
+library(lme4)
+
+library(lmerTest)
+
+model <- lme4::lmer(formula = rootdw ~ riego * geno + (1|bloque), data = fb)
+anova(model)
+
+```
+**Prueba de normalida**
+```{r}
+plot(modelo)
+```
+**Eliminación de datos atípicos**
+```{r}
+ol <- boxplot(rootdw ~ riego * geno, fb)
+
+ol
+```
+
+```{r}
+library(inti)
+
+model <- remove_outliers(data = fb
+                             , formula = rootdw ~ riego * geno + (1|bloque)
+                         , plot_diag = T)
+model
+```
+
+**Comparación de medias** 
+
+```{r}
+library(agricolae)
+library(tidyverse)
+tukey_interaccion <- HSD.test(modelo, c("riego","geno"), group = TRUE)
+print(tukey_interaccion)
+plot(tukey_interaccion)
+
+str(tukey_interaccion)
+
+grupos <- tukey_interaccion$groups %>% 
+  rownames_to_column("Tratamientos") %>% 
+  separate("Tratamientos", into = c("riego","geno"))
+
+str(grupos)
+```
+
+```{r}
+ggplot(grupos, aes(x = geno, y = rootdw, fill = riego)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = groups), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, 
+            size = 3) +  
+  labs(title = "Efecto de Geno y Riego en ROOTDW",
+       x = "Genotipo",
+       y = "ROOTDW") +
+  theme_minimal() +
+  scale_fill_discrete(name = "Riego") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+## Peso seco del tubérculo (g)
+
+### Modelo lineal de tubdw
+
+**ANOVA**
+
+```{r}
+modelo <- aov(formula = tubdw ~  bloque + riego + geno + riego*geno
+          , data = fb)
+
+anova(modelo)
+```
+**Prueba de normalidad**
+```{r}
+plot(modelo)
+```
+
+**Interacción de niveles de riego y Geno**
+```{r}
+library(ggplot2)
+ggplot(fb, aes(x = geno, y = tubdw, colour = riego)) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 16, outlier.size = 2) +
+  labs(title = "Boxplot con interacción de niveles de riego y genotipo",
+       x = "Interacción Riego y Genotipo",
+       y = "Peso seco del tubérculo (g)")
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
+```
+
+### Modelo lineal mixto 
+```{r}
+library(lme4)
+
+library(lmerTest)
+
+model <- lme4::lmer(formula = tubdw ~ riego * geno + (1|bloque), data = fb)
+anova(model)
+
+```
+**Prueba de normalida**
+```{r}
+plot(modelo)
+```
+**Eliminación de datos atípicos**
+```{r}
+ol <- boxplot(tubdw ~ riego * geno, fb)
+
+ol
+```
+
+```{r}
+library(inti)
+
+model <- remove_outliers(data = fb
+                             , formula = tubdw ~ riego * geno + (1|bloque)
+                         , plot_diag = T)
+model
+```
+
+**Comparación de medias** 
+
+```{r}
+library(agricolae)
+library(tidyverse)
+tukey_interaccion <- HSD.test(modelo, c("riego","geno"), group = TRUE)
+print(tukey_interaccion)
+plot(tukey_interaccion)
+
+str(tukey_interaccion)
+
+grupos <- tukey_interaccion$groups %>% 
+  rownames_to_column("Tratamientos") %>% 
+  separate("Tratamientos", into = c("riego","geno"))
+
+str(grupos)
+```
+
+```{r}
+ggplot(grupos, aes(x = geno, y = tubdw, fill = riego)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = groups), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, 
+            size = 3) +  
+  labs(title = "Efecto de Geno y Riego en TUBDW",
+       x = "Genotipo",
+       y = "TUBDW") +
+  theme_minimal() +
+  scale_fill_discrete(name = "Riego") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Transpiración total (l)
+
+### Modelo lineal de ttrans
+
+**ANOVA**
+
+```{r}
+modelo <- aov(formula = ttrans ~  bloque + riego + geno + riego*geno
+          , data = fb)
+
+anova(modelo)
+```
+**Prueba de normalidad**
+```{r}
+plot(modelo)
+```
+
+**Interacción de niveles de riego y Geno**
+```{r}
+library(ggplot2)
+ggplot(fb, aes(x = geno, y = ttrans, colour = riego)) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 16, outlier.size = 2) +
+  labs(title = "Boxplot con interacción de niveles de riego y genotipo",
+       x = "Interacción Riego y Genotipo",
+       y = "Transpiraciòn total")
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
+```
+
+### Modelo lineal mixto 
+```{r}
+library(lme4)
+
+library(lmerTest)
+
+model <- lme4::lmer(formula = ttrans ~ riego * geno + (1|bloque), data = fb)
+anova(model)
+
+```
+**Prueba de normalida**
+```{r}
+plot(modelo)
+```
+**Eliminación de datos atípicos**
+```{r}
+ol <- boxplot(ttrans ~ riego * geno, fb)
+
+ol
+```
+
+```{r}
+library(inti)
+
+model <- remove_outliers(data = fb
+                             , formula = ttrans ~ riego * geno + (1|bloque)
+                         , plot_diag = T)
+model
+```
+
+**Comparación de medias** 
+
+```{r}
+library(agricolae)
+library(tidyverse)
+tukey_interaccion <- HSD.test(modelo, c("riego","geno"), group = TRUE)
+print(tukey_interaccion)
+plot(tukey_interaccion)
+
+str(tukey_interaccion)
+
+grupos <- tukey_interaccion$groups %>% 
+  rownames_to_column("Tratamientos") %>% 
+  separate("Tratamientos", into = c("riego","geno"))
+
+str(grupos)
+```
+
+```{r}
+ggplot(grupos, aes(x = geno, y = ttrans, fill = riego)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = groups), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, 
+            size = 3) +  
+  labs(title = "Efecto de Geno y Riego en TTRANS",
+       x = "Genotipo",
+       y = "TTRANS") +
+  theme_minimal() +
+  scale_fill_discrete(name = "Riego") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Eficiencia del uso del agua (g/l)
+
+### Modelo lineal de wue 
+
+**ANOVA**
+
+```{r}
+modelo <- aov(formula = wue  ~  bloque + riego + geno + riego*geno
+          , data = fb)
+
+anova(modelo)
+```
+**Prueba de normalidad**
+```{r}
+plot(modelo)
+```
+
+**Interacción de niveles de riego y Geno**
+```{r}
+library(ggplot2)
+ggplot(fb, aes(x = geno, y = wue , colour = riego)) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 16, outlier.size = 2) +
+  labs(title = "Boxplot con interacción de niveles de riego y genotipo",
+       x = "Interacción Riego y Genotipo",
+       y = "Eficiencia del uso del agua (g/l)")
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
+```
+
+### Modelo lineal mixto 
+```{r}
+library(lme4)
+
+library(lmerTest)
+
+model <- lme4::lmer(formula = wue ~ riego * geno + (1|bloque), data = fb)
+anova(model)
+
+```
+**Prueba de normalida**
+```{r}
+plot(modelo)
+```
+**Eliminación de datos atípicos**
+```{r}
+ol <- boxplot(wue ~ riego * geno, fb)
+
+ol
+```
+
+```{r}
+library(inti)
+
+model <- remove_outliers(data = fb
+                             , formula = wue ~ riego * geno + (1|bloque)
+                         , plot_diag = T)
+model
+```
+
+**Comparación de medias** 
+
+```{r}
+library(agricolae)
+library(tidyverse)
+tukey_interaccion <- HSD.test(modelo, c("riego","geno"), group = TRUE)
+print(tukey_interaccion)
+plot(tukey_interaccion)
+
+str(tukey_interaccion)
+
+grupos <- tukey_interaccion$groups %>% 
+  rownames_to_column("Tratamientos") %>% 
+  separate("Tratamientos", into = c("riego","geno"))
+
+str(grupos)
+```
+
+```{r}
+ggplot(grupos, aes(x = geno, y = wue, fill = riego)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = groups), 
+            position = position_dodge(width = 0.9), 
+            vjust = -0.3, 
+            size = 3) +  
+  labs(title = "Efecto de Geno y Riego en WUE",
+       x = "Genotipo",
+       y = "WUE") +
+  theme_minimal() +
+  scale_fill_discrete(name = "Riego") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+# Discusión 
+
