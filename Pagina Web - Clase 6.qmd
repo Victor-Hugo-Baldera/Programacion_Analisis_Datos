@@ -290,4 +290,87 @@ ggplot(cm1_df, aes(x = geno, y = emmean, color = riego, group = riego)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   ggtitle("Medias marginales ajustadas por genotipo y riego")
 ```
+# Analisis multivariado 
+
+## Corelacion 
+
+```{r}
+
+variables_cuantitativas <- fb[, c("lfa", "hi", "leafdw", "wue")]
+
+matriz_correlacion <- cor(variables_cuantitativas, method = "pearson")
+
+print(matriz_correlacion)
+
+library(corrplot)
+corrplot(matriz_correlacion, method = "circle", type = "upper", 
+         tl.col = "black", tl.srt = 45, 
+         title = "Matriz de Correlación", mar = c(0, 0, 1, 0))
+
+```
+
+```{r}
+
+library(PerformanceAnalytics)
+my_data <- fb[, c("lfa", "hi", "leafdw", "wue", "op_84")]
+chart.Correlation(my_data, histogram=TRUE, pch=19)
+
+```
+
+```{r}
+library(tidyverse)
+library(psych)
+fb %>% 
+  select_if(is.numeric) %>% 
+ dplyr::select(!c("block")) %>% 
+pairs.panels(x = .
+      , hist.col="blue"
+      , pch = 21
+      , stars = TRUE 
+      , scale = FALSE 
+      , lm= TRUE
+      )
+```
+
+## Analisis  de PCA 
+```{r}
+
+variables_cuantitativas <- fb[sapply(fb, is.numeric)]
+
+variables_cuantitativas_estandarizadas <- scale(variables_cuantitativas)
+
+pca_result <- prcomp(variables_cuantitativas_estandarizadas, center = TRUE, scale. = TRUE)
+summary(pca_result)
+screeplot(pca_result, type = "lines", main = "Scree Plot")
+library(ggplot2)
+biplot(pca_result, main = "Biplot del PCA", cex = 0.7)
+library(ggfortify)
+autoplot(pca_result, data = fb, colour = 'black', loadings = TRUE, loadings.label = TRUE, 
+         loadings.label.size = 3, main = "Gráfico de Componentes Principales")
+
+```
+
+### PCA DOS EN UNO
+
+```{r}
+library(FactoMineR)
+library(cowplot)
+mv <- fb %>%
+  group_by(riego, geno) %>%
+  summarise(across(where(is.numeric), ~ mean(., na.rm = TRUE))) %>%
+  PCA(scale.unit = T, quali.sup = c(1:4), graph = F)
+
+p1 <- plot(mv,
+           choix="ind",
+           habillage=1,
+           label = "ind")
+
+p2 <- plot(mv,
+           choix="var")
+
+list(p1, p2) %>%
+  plot_grid(plotlist = ., nrow = 1)
+
+```
+
 

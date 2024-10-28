@@ -27,8 +27,6 @@ El experimento se realizó en el invernadero 10 A del Centro Internacional de la
 ```{r}
 library(knitr)
 knitr::include_graphics("C:/Users/HP/OneDrive/Documentos/INGENERIA AGRONOMA/Ingenieria Agronoma VIII/PROGRAMACIÓN Y ANÁLISIS DE DATOS/UNIDAD II/LG.png")
-echo=FALSE 
-
 ```
 
 Este tipo de entorno es clave en estudios de estrés abiótico porque permite observar respuestas fisiológicas y morfológicas en las plantas sin interferencia de factores externos no controlados. Las temperaturas promedio máximas y mínimas dentro del invernadero, de 24 °C y 15 °C respectivamente, junto con una humedad relativa del 80%, crearon un ambiente estable que facilitará el monitoreo preciso de las respuestas de las plantas y la evaluación de la eficiencia. en el uso del agua (EUA). Además, el CIP es un referente global en investigación en papa, lo que garantiza un acceso a infraestructura y metodologías avanzadas para el análisis de cultivos bajo estrés hídrico.
@@ -600,4 +598,9 @@ ggplot(grupos, aes(x = geno, y = wue, fill = riego)) +
 ```
 
 # Discusión 
+
+# Referencia bibliográfica
+
+Lozano Isla, F. (2015). Eficiencia de uso de agua en membrillo genotipos de papa (Solanum tuberosum L.) bajo condiciones de estrés hídrico por sequía [Tesis de licenciatura, Universidad Nacional Agraria La Molina]. Repositorio Institucional de la Universidad Nacional Agraria La Molina
+
 
