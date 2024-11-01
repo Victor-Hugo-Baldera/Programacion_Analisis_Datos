@@ -9,7 +9,13 @@ format:
     embed-resources: true
     output-file: index
 ---
+
 ```{r}
+R.version.string
+
+cat("Project: ", getwd())
+library(sessioninfo)
+session_info()
 
 ```
 
@@ -194,7 +200,7 @@ model <- remove_outliers(data = fb
 model
 ```
 
-**Comparación de medias** 
+### Comparación de medias 
 
 ```{r}
 library(agricolae)
@@ -287,7 +293,7 @@ model <- remove_outliers(data = fb
 model
 ```
 
-**Comparación de medias** 
+### Comparación de medias 
 
 ```{r}
 library(agricolae)
@@ -380,7 +386,7 @@ model <- remove_outliers(data = fb
 model
 ```
 
-**Comparación de medias** 
+### Comparación de medias 
 
 ```{r}
 library(agricolae)
@@ -472,7 +478,7 @@ model <- remove_outliers(data = fb
 model
 ```
 
-**Comparación de medias** 
+### Comparación de medias
 
 ```{r}
 library(agricolae)
@@ -564,7 +570,7 @@ model <- remove_outliers(data = fb
 model
 ```
 
-**Comparación de medias** 
+### Comparación de medias
 
 ```{r}
 library(agricolae)
@@ -596,6 +602,175 @@ ggplot(grupos, aes(x = geno, y = wue, fill = riego)) +
   scale_fill_discrete(name = "Riego") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+## Analisis multivariado 
+
+## Corelaciòn 
+
+```{r}
+
+variables_cuantitativas <- fb[, c("leafdw", "ttrans", "tubdw", "wue")]
+
+matriz_correlacion <- cor(variables_cuantitativas, method = "pearson")
+
+print(matriz_correlacion)
+
+library(corrplot)
+corrplot(matriz_correlacion, method = "circle", type = "upper", 
+         tl.col = "black", tl.srt = 45, 
+         title = "Matriz de Correlación", mar = c(0, 0, 1, 0))
+
+```
+
+
+```{r}
+library(tidyverse)
+library(psych)
+
+fb %>%
+  dplyr::select(c("leafdw", "ttrans", "tubdw", "wue")) %>%
+  pairs.panels(
+    x = .,
+    hist.col = "blue",
+    pch = 21,
+    stars = TRUE,
+    scale = FALSE,
+    lm = TRUE
+  )
+
+```
+
+## Analisis  de PCA 
+```{r}
+library(tidyverse)
+library(psych)
+library(ggplot2)
+library(ggfortify)
+
+variables_cuantitativas <- fb %>%
+  dplyr::select(c("leafdw", "ttrans", "tubdw", "wue"))
+
+variables_cuantitativas_estandarizadas <- scale(variables_cuantitativas)
+
+pca_result <- prcomp(variables_cuantitativas_estandarizadas, center = TRUE, scale. = TRUE)
+
+summary(pca_result)
+
+screeplot(pca_result, type = "lines", main = "Scree Plot")
+
+
+biplot(pca_result, main = "Biplot del PCA", cex = 0.7)
+
+autoplot(pca_result, data = fb, colour = 'black', loadings = TRUE, loadings.label = TRUE, 
+         loadings.label.size = 3, main = "Gráfico de Componentes Principales")
+
+```
+
+### PCA DOS EN UNO
+
+```{r}
+library(FactoMineR)
+library(cowplot)
+mv <- fb %>%
+  group_by(riego, geno) %>%
+  summarise(across(where(is.numeric), ~ mean(., na.rm = TRUE))) %>%
+  PCA(scale.unit = T, quali.sup = c(1:4), graph = F)
+
+p1 <- plot(mv,
+           choix="ind",
+           habillage=1,
+           label = "ind")
+
+p2 <- plot(mv,
+           choix="var")
+
+list(p1, p2) %>%
+  plot_grid(plotlist = ., nrow = 1)
+
+```
+
+
+```{r}
+
+variables_cuantitativas <- fb[, c("lfa", "hi", "leafdw", "wue")]
+
+matriz_correlacion <- cor(variables_cuantitativas, method = "pearson")
+
+print(matriz_correlacion)
+
+library(corrplot)
+corrplot(matriz_correlacion, method = "circle", type = "upper", 
+         tl.col = "black", tl.srt = 45, 
+         title = "Matriz de Correlación", mar = c(0, 0, 1, 0))
+
+```
+
+```{r}
+
+library(PerformanceAnalytics)
+my_data <- fb[, c("lfa", "hi", "leafdw", "wue", "op_84")]
+chart.Correlation(my_data, histogram=TRUE, pch=19)
+
+```
+
+```{r}
+library(tidyverse)
+library(psych)
+fb %>% 
+  select_if(is.numeric) %>% 
+ dplyr::select(!c("block")) %>% 
+pairs.panels(x = .
+      , hist.col="blue"
+      , pch = 21
+      , stars = TRUE 
+      , scale = FALSE 
+      , lm= TRUE
+      )
+```
+
+## Analisis  de PCA 
+```{r}
+
+variables_cuantitativas <- fb[sapply(fb, is.numeric)]
+
+variables_cuantitativas_estandarizadas <- scale(variables_cuantitativas)
+
+pca_result <- prcomp(variables_cuantitativas_estandarizadas, center = TRUE, scale. = TRUE)
+summary(pca_result)
+screeplot(pca_result, type = "lines", main = "Scree Plot")
+library(ggplot2)
+biplot(pca_result, main = "Biplot del PCA", cex = 0.7)
+library(ggfortify)
+autoplot(pca_result, data = fb, colour = 'black', loadings = TRUE, loadings.label = TRUE, 
+         loadings.label.size = 3, main = "Gráfico de Componentes Principales")
+
+```
+
+### PCA DOS EN UNO
+```{r}
+library(FactoMineR)
+library(cowplot)
+library(tidyverse)
+
+# Calcular las medias solo de las variables de interés
+mv <- fb %>%
+  group_by(riego, geno) %>%
+  summarise(across(c("leafdw", "ttrans", "tubdw", "wue"), ~ mean(., na.rm = TRUE)), .groups = "drop")
+
+# Asegurarse de que las columnas seleccionadas son las correctas
+pca_result <- PCA(mv[, c("leafdw", "ttrans", "tubdw", "wue")], 
+                  scale.unit = TRUE, graph = FALSE)
+
+# Graficar los individuos y las variables en el PCA
+p1 <- plot.PCA(pca_result, choix = "ind", label = "ind")
+p2 <- plot.PCA(pca_result, choix = "var")
+
+# Combinar los gráficos en una fila
+plot_grid(p1, p2, nrow = 1)
+
+
+```
+
+
 
 # Discusión 
 
