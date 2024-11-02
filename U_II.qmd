@@ -14,18 +14,51 @@ format:
 R.version.string
 
 cat("Project: ", getwd())
+
+```
+
+```{r}
+
 library(sessioninfo)
+
 session_info()
 
 ```
 
+
+
 # Resumen 
+
+Este estudio evaluó la respuesta de quince genotipos de papa (Solanum tuberosum L.) bajo condiciones de sequía, con el objetivo de identificar aquellos que presenten mayor eficiencia en el uso de agua y tolerancia al estrés hídrico. Los genotipos fueron cultivados en un invernadero bajo condiciones controladas, midiendo variables claves como el peso seco de la raíz, hojas y tubérculos, transpiración total y eficiencia en el uso de agua. Para el análisis de estos datos, se empleó el software R Studio, realizando un análisis de varianza (ANOVA) para determinar las diferencias significativas entre los genotipos. Posteriormente, se aplicó la prueba de comparaciones múltiples de Tukey para identificar los grupos con diferencias estadísticas en las variables estudiadas. Los resultados obtenidos proporcionan información relevante para el mejoramiento de variedades de papa más resilientes frente a la sequía, contribuyendo así a la sostenibilidad de su cultivo en escenarios de cambio climático.
+
 
 # Introducción
 
+La papa (Solanum tuberosum L.) es el tercer cultivo con mayor área sembrada a nivel mundial, y Perú destaca como uno de los principales productores de este tubérculo en América Latina. En el país, la producción de papa constituye el sustento económico de más de 600 mil pequeños agricultores en 19 regiones, lo que subraya la importancia de su estudio en diferentes condiciones medioambientales.
+Ante el cambio climático, la disponibilidad de agua se ha reducido, y la necesidad de producir alimentos para una población en constante crecimiento ha impulsado el interés en investigaciones sobre el uso eficiente del agua. En este contexto, los estudios que buscan identificar plantas tolerantes o resistentes al calor y a la sequía son esenciales, especialmente en cultivos como la papa, que es susceptible al estrés hídrico. El impacto de la sequía en la papa se traduce en una disminución de los rendimientos y en una reducción de la calidad del tubérculo.
+En esta página se analiza parámetros fisiológicos y morfológicos para relacionarlos con la eficiencia en el uso de agua y el rendimiento en 15 genotipos de papa. Se espera identificar y seleccionar aquellos genotipos que presenten una mayor tolerancia a condiciones de sequía, manteniendo niveles de rendimiento aceptables. Para esto, se empleó la metodología del lisímetro, la cual permite estimar la transpiración o consumo neto de agua de las plantas. A lo largo del experimento, se llevaron a cabo evaluaciones morfológicas y fisiológicas, observando los mecanismos que las plantas emplean para adaptarse a condiciones de estrés hídrico. Los datos obtenidos fueron correlacionados con el rendimiento, permitiendo identificar aquellas variables con mayor respuesta ante la sequía.
+La página web creada para este proyecto juega un rol fundamental, permitiendo una presentación detallada y accesible del proceso de análisis de datos. A través de esta plataforma, se facilita el acceso a los resultados obtenidos y se brindan herramientas para comprender las implicancias de estos en el mejoramiento del cultivo de papa bajo condiciones de estrés hídrico.
+
+
 # Marco teórico 
 
+La papa (Solanum tuberosum L.) es un cultivo fundamental para la seguridad alimentaria mundial y destaca en el Perú como un recurso vital tanto para el sustento de familias agricultoras como para la economía rural. En términos de producción nacional, Perú se ubica entre los mayores productores de papa en América Latina, cultivando aproximadamente 330,000 hectáreas anuales y alcanzando una producción de más de 5 millones de toneladas. Este cultivo es particularmente relevante en el país, ya que sostiene a más de 600 mil agricultores en diversas regiones, generando ingresos y empleo en áreas rurales.
+La importancia de la papa en Perú radica en su rol como alimento nutritivo, rico en carbohidratos, vitaminas y minerales esenciales, lo cual lo convierte en una fuente de energía accesible y versátil en la dieta peruana. Además, la papa tiene un profundo valor cultural, siendo cultivada en el país desde hace miles de años y representando una parte integral del patrimonio agrícola y gastronómico de la región andina.
+Desde el punto de vista morfológico, la planta de papa se caracteriza por ser una herbácea de tallos subterráneos (estolones) que generan los tubérculos, su principal órgano de almacenamiento. Estos tubérculos tienen forma redondeada u ovalada y presentan una piel que puede variar en color según la variedad. Las hojas son compuestas y pinnadas, y las flores, que aparecen en racimos, pueden ser de colores blanco, morado o rosado, dependiendo también del genotipo. Esta diversidad morfológica permite una variabilidad en las características de los tubérculos, como tamaño, color y contenido nutricional.
+En cuanto a los requerimientos agronómicos, la papa es una planta de clima fresco que se adapta bien a zonas con altitudes entre los 2,000 y 4,000 metros sobre el nivel del mar, aunque también puede cultivarse en áreas de menor elevación con manejo adecuado. La temperatura óptima para su crecimiento se sitúa entre los 15 y 20°C, siendo sensible a extremos de calor y frío. Su sistema radicular es poco profundo, por lo que requiere de suelos sueltos y bien drenados que faciliten el desarrollo de los tubérculos. En términos de riego, la papa necesita un suministro constante de agua, ya que es susceptible a períodos de sequía, lo que afecta tanto el rendimiento como la calidad del tubérculo. Sin embargo, el exceso de agua puede favorecer enfermedades fúngicas, por lo que es fundamental un manejo hídrico balanceado. Además, requiere una fertilización adecuada, con un especial enfoque en nutrientes como el nitrógeno, fósforo y potasio, que son esenciales para su desarrollo y producción.
+Esta combinación de factores agronómicos, junto con su valor social y económico, hace de la papa un cultivo prioritario en las estrategias de investigación y manejo de recursos en el país, especialmente en contextos donde el cambio climático demanda una producción sostenible y adaptativa.
+
+## Relación de la página web con el estudio
+
+La página web ofrece una plataforma digital en la que se presentan los hallazgos de este estudio, facilitando el acceso a los datos, análisis y conclusiones relevantes. Este enfoque digital permite que los investigadores, agricultores y otros interesados puedan interactuar con los resultados, explorar visualizaciones de datos, y comprender los procesos de análisis que revelan la eficiencia en el uso del agua en los diferentes genotipos de papa estudiados.
+A través de la página, se pretende no solo mostrar los resultados de la investigación, sino también abrir un espacio educativo y de consulta que apoye la toma de decisiones informada en la selección de genotipos y el manejo del cultivo de papa en condiciones de estrés hídrico. Así, la página web se convierte en una herramienta de valor para la diseminación del conocimiento y la aplicación práctica de los resultados obtenidos en la investigación.
+
+
 # Materiales 
+
+Para la presente investigación, se emplearon quince (15) genotipos de papa seleccionados a partir de poblaciones de mejoramiento del Centro Internacional de la Papa. Estos genotipos fueron elegidos por sus destacadas características agronómicas y bromatológicas, que los hacen aptos para estudios de rendimiento y adaptación. Entre ellos se incluyeron dos variedades conocidas, ÚNICA y Achirana, previamente evaluadas en condiciones de sequía, con lo que se cuenta con información sobre su tolerancia al estrés hídrico. Cada genotipo presenta variaciones en su precocidad y madurez fisiológica, lo cual permite una evaluación más amplia de su desempeño bajo condiciones limitantes de agua
+El experimento se llevó a cabo en un invernadero, ubicado en el Departamento de Lima, Provincia de Lima, en el distrito de La Molina, a una altitud de 244 metros sobre el nivel del mar. Este espacio de cultivo protegido brindó un ambiente controlado, lo que permitió manejar las variables ambientales y minimizar el impacto de factores externos. Las coordenadas geográficas de la ubicación son 12° 04' 33.91" de latitud sur y 76° 56' 45.68" de longitud oeste. Dentro del invernadero, las plantas se mantuvieron en condiciones óptimas de temperatura, luz y humedad, factores esenciales para asegurar que el estrés hídrico aplicado fuera el principal factor de estudio. Las condiciones climáticas locales, características de la región costera central del Perú, proporcionaron un contexto adecuado para simular situaciones de déficit hídrico, facilitando así el análisis de los mecanismos de adaptación de los genotipos de papa.
+
 
 ## Lugar de ejecución
 
@@ -153,6 +186,7 @@ modelo <- aov(formula = leafdw ~  bloque + riego + geno + riego*geno
 
 anova(modelo)
 ```
+
 **Prueba de normalidad**
 ```{r}
 plot(modelo)
@@ -169,6 +203,7 @@ ggplot(fb, aes(x = geno, y = leafdw, colour = riego)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
 ```
+
 
 ### Modelo lineal mixto 
 ```{r}
@@ -431,10 +466,15 @@ modelo <- aov(formula = ttrans ~  bloque + riego + geno + riego*geno
 
 anova(modelo)
 ```
+
+**Interpretación:**El análisis de varianza muestra que los factores "riego" y "genotipo" tienen un efecto altamente significativo sobre la variable peso seco de las hojas, indicando que ambos factores influyen fuertemente en el resultado.
+
 **Prueba de normalidad**
 ```{r}
 plot(modelo)
 ```
+
+Las gráfica de residuos estandarizados muestra que los puntos siguen de manera bastante cercana la línea diagonal, lo cual indica que los residuos se aproximan a una distribución normal. A excepción de algunos puntos en los extremos.
 
 **Interacción de niveles de riego y Geno**
 ```{r}
@@ -447,6 +487,8 @@ ggplot(fb, aes(x = geno, y = ttrans, colour = riego)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
 ```
+
+El boxplot muestra que la transpiración total es mayor bajo riego, en comparación con sequía, para la mayoría de los genotipos, indicando que el riego aumenta la transpiración. Además, se observa valores atípicos, es decir, datos que se alejan considerablemente del rango intercuartílico para cada combinación de riego y genotipo.
 
 ### Modelo lineal mixto 
 ```{r}
@@ -511,6 +553,8 @@ ggplot(grupos, aes(x = geno, y = ttrans, fill = riego)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+**Interpretación:** La gráfica muestra la transpiración total de varios genotipos (G01 a G15) bajo condiciones de riego "irrigado" y "sequía". Los valores de transpiración total son generalmente mayores en "irrigado", destacando el genotipo G08 con el valor más alto. Las letras sobre las barras indican diferencias estadísticas: genotipos con letras distintas tienen diferencias significativas en transpiración total, mientras que los que comparten letras no. Esto sugiere que el riego afecta la transpiración en distintos grados según el genotipo.
+
 ## Eficiencia del uso del agua (g/l)
 
 ### Modelo lineal de wue 
@@ -523,10 +567,15 @@ modelo <- aov(formula = wue  ~  bloque + riego + geno + riego*geno
 
 anova(modelo)
 ```
+
+**Interpretación:**El análisis de ANOVA muestra que el riego tiene un efecto altamente significativo en la eficiencia del uso del agua al igual que y genotipo. Sin embargo, no hay interacción significativa entre riego y genotipo, lo que indica que el efecto del riego no depende del genotipo. 
+
 **Prueba de normalidad**
 ```{r}
 plot(modelo)
 ```
+
+Las gráficas de residuos estandarizados muestran que los puntos siguen de manera bastante cercana la línea diagonal, lo cual indica que los residuos se aproximan a una distribución normal. A excepción de algunos puntos en los extremos.
 
 **Interacción de niveles de riego y Geno**
 ```{r}
@@ -539,6 +588,8 @@ ggplot(fb, aes(x = geno, y = wue , colour = riego)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
 ```
+
+Las cajas representan la variabilidad de los datos, mientras que los puntos rojos indican valores atípicos. En general, la eficiencia muestra variaciones entre genotipos, siendo ligeramente superior en condiciones de sequía para algunos, como G03, G07 y G11, lo que sugiere que ciertos genotipos son más efectivos en el uso del agua cuando enfrentan estrés hídrico.
 
 ### Modelo lineal mixto 
 ```{r}
@@ -602,6 +653,9 @@ ggplot(grupos, aes(x = geno, y = wue, fill = riego)) +
   scale_fill_discrete(name = "Riego") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
+Se muestra que la eficiencia del uso del agua es mayor en sequía para la mayoría de los genotipos, destacando G05, G10 y G15 con los valores más altos.
+
 ## Analisis multivariado 
 
 ## Corelaciòn 
@@ -667,85 +721,7 @@ autoplot(pca_result, data = fb, colour = 'black', loadings = TRUE, loadings.labe
 
 ### PCA DOS EN UNO
 
-```{r}
-library(FactoMineR)
-library(cowplot)
-mv <- fb %>%
-  group_by(riego, geno) %>%
-  summarise(across(where(is.numeric), ~ mean(., na.rm = TRUE))) %>%
-  PCA(scale.unit = T, quali.sup = c(1:4), graph = F)
 
-p1 <- plot(mv,
-           choix="ind",
-           habillage=1,
-           label = "ind")
-
-p2 <- plot(mv,
-           choix="var")
-
-list(p1, p2) %>%
-  plot_grid(plotlist = ., nrow = 1)
-
-```
-
-
-```{r}
-
-variables_cuantitativas <- fb[, c("lfa", "hi", "leafdw", "wue")]
-
-matriz_correlacion <- cor(variables_cuantitativas, method = "pearson")
-
-print(matriz_correlacion)
-
-library(corrplot)
-corrplot(matriz_correlacion, method = "circle", type = "upper", 
-         tl.col = "black", tl.srt = 45, 
-         title = "Matriz de Correlación", mar = c(0, 0, 1, 0))
-
-```
-
-```{r}
-
-library(PerformanceAnalytics)
-my_data <- fb[, c("lfa", "hi", "leafdw", "wue", "op_84")]
-chart.Correlation(my_data, histogram=TRUE, pch=19)
-
-```
-
-```{r}
-library(tidyverse)
-library(psych)
-fb %>% 
-  select_if(is.numeric) %>% 
- dplyr::select(!c("block")) %>% 
-pairs.panels(x = .
-      , hist.col="blue"
-      , pch = 21
-      , stars = TRUE 
-      , scale = FALSE 
-      , lm= TRUE
-      )
-```
-
-## Analisis  de PCA 
-```{r}
-
-variables_cuantitativas <- fb[sapply(fb, is.numeric)]
-
-variables_cuantitativas_estandarizadas <- scale(variables_cuantitativas)
-
-pca_result <- prcomp(variables_cuantitativas_estandarizadas, center = TRUE, scale. = TRUE)
-summary(pca_result)
-screeplot(pca_result, type = "lines", main = "Scree Plot")
-library(ggplot2)
-biplot(pca_result, main = "Biplot del PCA", cex = 0.7)
-library(ggfortify)
-autoplot(pca_result, data = fb, colour = 'black', loadings = TRUE, loadings.label = TRUE, 
-         loadings.label.size = 3, main = "Gráfico de Componentes Principales")
-
-```
-
-### PCA DOS EN UNO
 ```{r}
 library(FactoMineR)
 library(cowplot)
