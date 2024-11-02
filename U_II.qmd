@@ -13,6 +13,7 @@ format:
     output-file: index 
 ---
 
+
 ```{r}
 R.version.string
 
@@ -477,7 +478,7 @@ modelo <- aov(formula = ttrans ~  bloque + riego + geno + riego*geno
 anova(modelo)
 ```
 
-**Interpretación:**El análisis de varianza muestra que los factores "riego" y "genotipo" tienen un efecto altamente significativo sobre la variable peso seco de las hojas, indicando que ambos factores influyen fuertemente en el resultado.
+**Interpretación:**El análisis de varianza muestra que los factores riego y genotipo tienen un efecto altamente significativo sobre la variable peso seco de las hojas, indicando que ambos factores influyen fuertemente en el resultado.
 
 **Prueba de normalidad**
 
@@ -570,7 +571,7 @@ ggplot(grupos, aes(x = geno, y = ttrans, fill = riego)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-**Interpretación:** La gráfica muestra la transpiración total de varios genotipos (G01 a G15) bajo condiciones de riego "irrigado" y "sequía". Los valores de transpiración total son generalmente mayores en "irrigado", destacando el genotipo G08 con el valor más alto. Las letras sobre las barras indican diferencias estadísticas: genotipos con letras distintas tienen diferencias significativas en transpiración total, mientras que los que comparten letras no. Esto sugiere que el riego afecta la transpiración en distintos grados según el genotipo.
+**Interpretación:** La gráfica muestra la transpiración total de los genotipos (G01 a G15) bajo condiciones de riego irrigado y sequía. Los valores de transpiración total son generalmente mayores en irrigado, destacando el genotipo G09 con el valor más alto. En tal sentido se sugiere que el riego afecta la transpiración en distintos grados según el genotipo.
 
 ## Eficiencia del uso del agua (g/l)
 
@@ -585,7 +586,7 @@ modelo <- aov(formula = wue  ~  bloque + riego + geno + riego*geno
 anova(modelo)
 ```
 
-**Interpretación:**El análisis de ANOVA muestra que el riego tiene un efecto altamente significativo en la eficiencia del uso del agua al igual que y genotipo. Sin embargo, no hay interacción significativa entre riego y genotipo, lo que indica que el efecto del riego no depende del genotipo.
+**Interpretación:**El análisis de ANOVA muestra que el riego tiene un efecto altamente significativo en la eficiencia del uso del agua al igual que el genotipo. Sin embargo, no hay interacción significativa entre riego y genotipo, lo que indica que el efecto del riego no depende del genotipo.
 
 **Prueba de normalidad**
 
@@ -686,7 +687,7 @@ Se muestra que la eficiencia del uso del agua es mayor en sequía para la mayor�
 
 ```{r}
 
-variables_cuantitativas <- fb[, c("leafdw", "ttrans", "tubdw", "wue")]
+variables_cuantitativas <- fb[, c("leafdw", "rootdw", "ttrans", "tubdw", "wue")]
 
 matriz_correlacion <- cor(variables_cuantitativas, method = "pearson")
 
@@ -704,7 +705,7 @@ library(tidyverse)
 library(psych)
 
 fb %>%
-  dplyr::select(c("leafdw", "ttrans", "tubdw", "wue")) %>%
+  dplyr::select(c("leafdw", "rootdw", "ttrans", "tubdw", "wue")) %>%
   pairs.panels(
     x = .,
     hist.col = "blue",
@@ -716,6 +717,8 @@ fb %>%
 
 ```
 
+La grafica presente es una matriz de correlación y es útil para analizar y visualizar las relaciones entre varias variables al mismo tiempo. Permite identificar la fuerza y dirección de las relaciones (positivas o negativas) entre variables, lo que ayuda a entender si cambios en una están asociados con cambios en otra. Por ejemplo, los coeficientes de evaluación de Pearson indican que el peso seco de la hoja presenta una calificación positiva moderada con el peso seco de la raíz, una fuerte con transpiración total, una moderada con peso seco del tubérculo, y una débil negativa con eficiencia del uso agua. 
+
 ## Analisis de PCA
 
 ```{r}
@@ -725,7 +728,7 @@ library(ggplot2)
 library(ggfortify)
 
 variables_cuantitativas <- fb %>%
-  dplyr::select(c("leafdw", "ttrans", "tubdw", "wue"))
+  dplyr::select(c("leafdw", "rootdw", "ttrans", "tubdw", "wue"))
 
 variables_cuantitativas_estandarizadas <- scale(variables_cuantitativas)
 
@@ -746,30 +749,53 @@ autoplot(pca_result, data = fb, colour = 'black', loadings = TRUE, loadings.labe
 ### PCA DOS EN UNO
 
 ```{r}
+
 library(FactoMineR)
 library(cowplot)
 library(tidyverse)
+library(factoextra)
+library(ggpubr)  
 
-# Calcular las medias solo de las variables de interés
 mv <- fb %>%
   group_by(riego, geno) %>%
-  summarise(across(c("leafdw", "ttrans", "tubdw", "wue"), ~ mean(., na.rm = TRUE)), .groups = "drop")
+  summarise(across(c("leafdw", "rootdw", "ttrans", "tubdw", "wue"), ~ mean(., na.rm = TRUE)), .groups = "drop")
 
-# Asegurarse de que las columnas seleccionadas son las correctas
-pca_result <- PCA(mv[, c("leafdw", "ttrans", "tubdw", "wue")], 
+
+pca_result <- PCA(mv[, c("leafdw", "rootdw", "ttrans", "tubdw", "wue")], 
                   scale.unit = TRUE, graph = FALSE)
 
-# Graficar los individuos y las variables en el PCA
-p1 <- plot.PCA(pca_result, choix = "ind", label = "ind")
-p2 <- plot.PCA(pca_result, choix = "var")
+p1 <- fviz_pca_ind(pca_result,
+                   geom.ind = "point", 
+                   pointshape = 21, # Forma de los puntos
+                   fill.ind = mv$riego, # Colorear por la variable riego
+                   col.ind = "black", # Color de contorno
+                   palette = "jco", # Usar una paleta de colores
+                   addEllipses = TRUE, # Añadir elipses por grupos
+                   legend.title = "Riego") +
+  geom_text(aes(label = mv$geno), # Añadir los números de genotipo
+            position = position_jitter(width = 0.1, height = 0.1), # Jitter para evitar solapamiento
+            size = 3, # Tamaño del texto
+            color = "black") + # Color del texto
+  labs(title = "PCA - Individuos") + 
+  theme_minimal()
+
+# Graficar las variables en el PCA
+p2 <- fviz_pca_var(pca_result,
+                   col.var = "contrib", # Color por contribución
+                   gradient.col = "RdYlBu", # Usar un gradiente de colores
+                   repel = TRUE) + # Evitar solapamientos
+  labs(title = "PCA - Variables") + 
+  theme_minimal()
 
 # Combinar los gráficos en una fila
 plot_grid(p1, p2, nrow = 1)
 
-
 ```
 
+El análisis de componentes principales (PCA) sirve para reducir la dimensionalidad de los datos y observar patrones o relaciones entre las observaciones y las variables en función de los componentes principales, que explican la mayor parte de la variabilidad. En el gráfico, se visualizan dos grupos de datos bajo distintas condiciones de riego: irrigado y sequía. Esto permite ver cómo las observaciones bajo condiciones de irrigación están más dispersas, indicando una mayor variabilidad, mientras que las de sequía están más concentradas, sugiriendo uniformidad. Por ejemplo, analizar al peso seco total de la biomasa varía entre genotipos en condiciones de riego y sequía. Observamos que el genotipo G09, representado como un punto azul y ubicado cerca de la dirección del vector, es el que más contribuye al peso seco total en condiciones de irrigado. 
+
 # Discusión
+
 
 # Referencia bibliográfica
 
