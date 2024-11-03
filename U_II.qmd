@@ -3,7 +3,7 @@ title: "EFICIENCIA DE USO DE AGUA EN QUINCE GENOTIPOS DE PAPA (Solanum tuberosum
 author: "Grupo C"
 output: 
   cleanrmd::html_document_clean:
-    theme: NULL
+    theme: null
 format:
   html:
     toc: true
@@ -12,6 +12,13 @@ format:
     embed-resources: true
     output-file: index 
 ---
+```{r}
+options(repos = c(
+  gadenbuie = 'https://gadenbuie.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'
+))
+
+```
 
 
 ```{r}
@@ -178,11 +185,15 @@ modelo <- aov(formula = leafdw ~  bloque + riego + geno + riego*geno
 anova(modelo)
 ```
 
+El riego tiene un efecto muy fuerte y significativo sobre el peso seco de las hojas. Los diferentes genotipos (variedades) muestran diferencias significativas entre sí. Existe una interacción entre riego y genotipo, lo que significa que diferentes variedades responden de manera distinta al riego entonces este análisis muestra que tanto el riego como el genotipo tienen efectos muy significativos sobre el peso seco de las hojas, siendo el riego el factor con mayor impacto. También existe una interacción significativa entre ambos factores, lo que sugiere que diferentes genotipos pueden responder de manera distinta a los tratamientos de riego.
+
 **Prueba de normalidad**
 
 ```{r}
 plot(modelo)
 ```
+
+La dispersión de los puntos es relativamente constante a lo largo del eje X (valores ajustados) esto siguiere que puede existir varianzas iguales. Además, identificaron 3 comportamientos inusuales (22, 137 y 330), entonces para confirmar si los datos tienen una distribución normal, se realiza Q -Q Residuals indicando que el análisis estadístico es apropiado y la presencia de valores atípicos no parece invalidar a la normalidad. Despúes se hace un Scale – Location donde el modelo muestra una varianza relativamente homogénea. Finalmente, nos da a entender que la variabilidad es relativamente constante entre los diferentes bloques. No hay diferencias sistemáticas entre bloques que pudieran afectar los resultados. 
 
 **Interacción de niveles de riego y Geno**
 
@@ -196,6 +207,8 @@ ggplot(fb, aes(x = geno, y = leafdw, colour = riego)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
 ```
+
+En general, el tratamiento irrigado (rojo) muestra valores más altos de peso seco que el tratamiento de sequía (azul). Hay variabilidad considerable entre los genotipos. La respuesta al riego varía entre los diferentes genotipos. Se observan varios valores atípicos (puntos rojos). La variabilidad (tamaño de las cajas) difiere entre genotipos. Algunos genotipos parecen más estables que otros frente a los tratamientos de riego. Hay clara evidencia de interacción, ya que la respuesta al riego no es uniforme entre genotipo.  Algunos genotipos son más sensibles al estrés hídrico que otros. Las plantas con riego tienen generalmente mayor peso seco que las plantas en sequía. 
 
 ### Modelo lineal mixto
 
@@ -265,6 +278,8 @@ ggplot(grupos, aes(x = geno, y = leafdw, fill = riego)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+Se observa que en el genotipo 7 (G7) no presentan diferencias estadísticamente significativas en el peso seco de hojas. Los G06 y G13 destacan mayor diferencia significativa por lo tanto podrían poseer características únicas que los diferencian de los demás, como una mayor eficiencia en el uso del agua, una mayor tolerancia a la sequía o un crecimiento más vigoroso.
+
 ## Peso seco de la raíz (g)
 
 ### Modelo lineal de rootdw
@@ -278,11 +293,15 @@ modelo <- aov(formula = rootdw ~  bloque + riego + geno + riego*geno
 anova(modelo)
 ```
 
+Solo el genotipo es altamente significativo. Esto indica que existen diferencias significativas en el peso seco de la raíz entre los diferentes genotipos de papa. En otras palabras, algunos genotipos producen raíces más pesadas que otros
+
 **Prueba de normalidad**
 
 ```{r}
 plot(modelo)
 ```
+
+La distribución de puntos es relativamente constante a lo largo del eje x sin embargo se puede notar la presencia de valores atípicos en los extremos de la diagonal, a su vez no afecta a la normalidad. Además, se logró identificar los valores atípicos en los bloques I, III y IV con números 92, 22 y 100. Pero al final nos da a entender que la variabilidad es constante entre los bloques diferentes lo cual no afectaran el resultado.
 
 **Interacción de niveles de riego y Geno**
 
@@ -296,6 +315,8 @@ ggplot(fb, aes(x = geno, y = rootdw, colour = riego)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
 ```
+
+Se observa valores atípicos y hay genotipos que muestran mayor variabilidad, cajas más grandes como el G06. La interacción entre estos dos factores indica que la respuesta al riego no es uniforme en todos los genotipos. Algunos genotipos muestran mayor peso seco de raíz bajo condiciones de sequía, mientras otros responden mejor bajo riego
 
 ### Modelo lineal mixto
 
@@ -365,6 +386,8 @@ ggplot(grupos, aes(x = geno, y = rootdw, fill = riego)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+Se puede observar que el grafico presenta letras iguales donde indica que no existe diferencias significativas con relación al peso seco de la raíz.
+
 ## Peso seco del tubérculo (g)
 
 ### Modelo lineal de tubdw
@@ -378,11 +401,15 @@ modelo <- aov(formula = tubdw ~  bloque + riego + geno + riego*geno
 anova(modelo)
 ```
 
+El riego es altamente significativo indicando que los tratamientos de riego tuvieron un efecto muy fuerte en el peso seco del tubérculo. Los genotipos también muestran diferencias significativas entre sí. El riego y el genotipo son factores muy importantes que afectan el peso seco del tubérculo
+
 **Prueba de normalidad**
 
 ```{r}
 plot(modelo)
 ```
+
+La distribución aleatoria de puntos a lo largo del eje x es relativamente constante, observando comportamientos inusuales en la parte inferior de la línea siendo estos valores atípicos (69, 142 y 54). Sin embargo, esto no afecta al resultado ya que los modelos presentan una varianza relativamente homogénea.
 
 **Interacción de niveles de riego y Geno**
 
@@ -396,6 +423,8 @@ ggplot(fb, aes(x = geno, y = tubdw, colour = riego)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Inclinar etiquetas del eje X
 ```
+
+El G15 muestra el mayor peso seco en condición irrigada, el G07 muestra los valores más bajos en ambas condiciones, el G09 también muestra buen rendimiento en condición irrigada finalmente los G03, G04 y G05 muestran rendimientos intermedios-altos en condición irrigada. Además de algunos genotipos muestran mayor variabilidad que otros. Hay varios valores atípicos (puntos rojos) especialmente en condición irrigada.
 
 ### Modelo lineal mixto
 
@@ -464,6 +493,8 @@ ggplot(grupos, aes(x = geno, y = tubdw, fill = riego)) +
   scale_fill_discrete(name = "Riego") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
+El G15 y G09 serían los mejores genotipos para condiciones de buen riego teniendo los valores más altos. Además, el gráfico nos presenta que todos son estadísticamente diferentes. 
 
 ## Transpiración total (l)
 
@@ -795,6 +826,11 @@ plot_grid(p1, p2, nrow = 1)
 El análisis de componentes principales (PCA) sirve para reducir la dimensionalidad de los datos y observar patrones o relaciones entre las observaciones y las variables en función de los componentes principales, que explican la mayor parte de la variabilidad. En el gráfico, se visualizan dos grupos de datos bajo distintas condiciones de riego: irrigado y sequía. Esto permite ver cómo las observaciones bajo condiciones de irrigación están más dispersas, indicando una mayor variabilidad, mientras que las de sequía están más concentradas, sugiriendo uniformidad. Por ejemplo, analizar al peso seco total de la biomasa varía entre genotipos en condiciones de riego y sequía. Observamos que el genotipo G09, representado como un punto azul y ubicado cerca de la dirección del vector, es el que más contribuye al peso seco total en condiciones de irrigado. 
 
 # Discusión
+
+El análisis de varianza realizado revela que el riego y el genotipo tienen efectos significativos en el peso seco de la hoja y del tubérculo, así como en la transpiración total y la eficiencia en el uso del agua. La interacción entre estos factores muestra que ciertos genotipos responden mejor al riego, como el G09 y G15, que destacan por su peso seco y alta transpiración en condiciones irrigadas, lo cual sugiere una mayor actividad fisiológica y potencial de crecimiento. Por otro lado, el peso seco de la raíz depende principalmente del genotipo, lo que indica una variabilidad genética en la adaptación para la absorción de nutrientes. Los resultados de eficiencia del uso del agua revelan que algunos genotipos, como G05, G10 y G15, son más eficientes bajo sequía, siendo especialmente útiles en condiciones de escasez hídrica. 
+El análisis multivariado y la correlación entre el peso seco de las hojas y la transpiración confirman que una mayor biomasa foliar incrementa la transpiración, y el PCA destaca cómo el riego amplifica las diferencias entre genotipos, permitiendo identificar variedades como G09 que maximizan la biomasa bajo riego. 
+
+Por otro lado, la utilización del programa R ofrece un conjunto de herramientas estadísticas avanzadas y flexibles para análisis complejos. Con paquetes como agricolae, ggplot2, entre otros más que se pueden realizar pruebas estadísticas, visualizaciones personalizadas y comparaciones de medios de forma eficiente y reproducible. La capacidad de manejar datos en R permite analizar múltiples factores e interacciones, optimizando la toma de decisiones en investigaciones agrícolas y otros campos. 
 
 
 # Referencia bibliográfica
