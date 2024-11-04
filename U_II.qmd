@@ -1,9 +1,6 @@
 ---
 title: "EFICIENCIA DE USO DE AGUA EN QUINCE GENOTIPOS DE PAPA (Solanum tuberosum L.) BAJO CONDICIONES DE ESTRÉS HÍDRICO POR SEQUÍA"
-author: "Grupo C"
-output: 
-  cleanrmd::html_document_clean:
-    theme: null
+author: "Edinson Pooll Acuña Ramirez , Victor Hugo Baldera Chapoñan , Amilcar Valle Lopez , Sheyla Mayli Vargas Rojas "
 format:
   html:
     toc: true
@@ -12,14 +9,6 @@ format:
     embed-resources: true
     output-file: index 
 ---
-```{r}
-options(repos = c(
-  gadenbuie = 'https://gadenbuie.r-universe.dev',
-  CRAN = 'https://cloud.r-project.org'
-))
-
-```
-
 
 ```{r}
 R.version.string
