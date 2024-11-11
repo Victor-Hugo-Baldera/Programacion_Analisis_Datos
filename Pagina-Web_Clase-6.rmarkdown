@@ -9,6 +9,7 @@ format:
     embed-resources: true
     output-file: index 
 ---
+
 # Quarto
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
@@ -17,18 +18,22 @@ Quarto enables you to weave together content and executable code into a finished
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
+
 ```{r}
 
 1 + 1
 
 ```
 
+
 You can add options to executable code like this 
+
 
 ```{r}
 #| echo: false
 2 * 2
 ```
+
 
 The `echo: false` option disables the printing of code (only output is displayed).
 
@@ -60,6 +65,7 @@ Esta es una formula cualquiera $$\frac{\left(2x-1\right)^2-1}{4}=k$$
 
 ## Importar datos
 
+
 ```{r}
 source('https://inkaverse.com/setup.r')
 
@@ -76,7 +82,9 @@ str(fb)
 ```
 
 
+
 ## Modelo lineal lfa
+
 
 
 ```{r}
@@ -88,7 +96,9 @@ anova(modelo)
 plot(modelo)
 ```
 
+
 ### boxplot
+
 
 ```{r}
 
@@ -102,7 +112,9 @@ ggplot(fb, aes(x = geno, y = lfa, colour = riego)) +
 
 ```
 
+
 ## Modelo lineal de hi
+
 
 ```{r}
 modelo <- aov(formula = hi ~  bloque + riego + geno + riego*geno
@@ -113,7 +125,9 @@ anova(modelo)
 plot(modelo)
 ```
 
+
 ### boxplot 
+
 
 
 ```{r}
@@ -128,7 +142,9 @@ ggplot(fb, aes(x = geno, y = hi, colour = riego)) +
 
 ```
 
+
 ## Modelo lineal mixto: lfa
+
 
 ```{r}
 library(lme4)
@@ -146,7 +162,6 @@ ol
 
 ```
 
-
 ```{r}
 library(inti)
 
@@ -156,7 +171,9 @@ model <- remove_outliers(data = fb
 model
 ```
 
+
 # Comparacion de medias 
+
 
 ```{r}
 modelo <- aov(formula = lfa ~  bloque + riego + geno + riego*geno
@@ -167,8 +184,10 @@ anova(modelo)
 plot(modelo)
 ```
 
+
 ## Comparacion de medias con Tukey con Agricolae 
 ### Comparacion de medias de tukey (riego )
+
 ```{r}
 library(agricolae)
 tukey_riego <- HSD.test(modelo, "riego", group = TRUE)
@@ -176,7 +195,9 @@ print(tukey_riego)
 plot(tukey_riego)
 ```
 
+
 ### Comparacion de medias con tukey (geno )
+
 
 ```{r}
 tukey_geno <- HSD.test(modelo, "geno", group = TRUE)
@@ -184,7 +205,9 @@ print(tukey_geno)
 plot(tukey_geno)
 ```
 
+
 ### Comparacion de medias de tukey (Interraccion riego y geno)
+
 
 ```{r}
 tukey_interaccion <- HSD.test(modelo, c("riego","geno"), group = TRUE)
@@ -195,7 +218,7 @@ str(tukey_interaccion)
 
 grupos <- tukey_interaccion$groups %>% 
   rownames_to_column("Tratamientos") %>% 
-  separate("Tratamientos", into = c("riego","geno"))
+  separate("Tratamientos", into = c("riego","geno"), sep = ":")
 
 str(grupos)
 ```
@@ -211,7 +234,9 @@ ggplot(grupos, aes(x = geno, y = lfa, fill = riego)) +
   scale_fill_discrete(name = "Riego") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
 ### Letras dentro de la grafica 
+
 ```{r}
 ggplot(grupos, aes(x = geno, y = lfa, fill = riego)) +
   geom_bar(stat = "identity", position = position_dodge()) +
@@ -227,8 +252,10 @@ ggplot(grupos, aes(x = geno, y = lfa, fill = riego)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+
 # Comparacion de medias con: emmeans 
 ## Modelo mixto de hi
+
 
 ```{r}
 source('https://inkaverse.com/setup.r')
@@ -254,7 +281,9 @@ cm3
 
 ```
 
+
 ### Grafica 
+
 ```{r}
 library(ggplot2)
 dtcm <- as.data.frame(cm1) %>% 
@@ -272,7 +301,9 @@ ggplot(dtcm, aes(x = geno, y = emmean, fill = riego)) +
   ggtitle("Gráfico de barras: HI por genotipo y riego")
 ```
 
+
 ###Grafica 2
+
 ```{r}
 library(ggplot2)
 library(emmeans)
@@ -289,9 +320,11 @@ ggplot(cm1_df, aes(x = geno, y = emmean, color = riego, group = riego)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   ggtitle("Medias marginales ajustadas por genotipo y riego")
 ```
+
 # Analisis multivariado 
 
 ## Corelacion 
+
 
 ```{r}
 
@@ -331,7 +364,9 @@ pairs.panels(x = .
       )
 ```
 
+
 ## Analisis  de PCA 
+
 ```{r}
 
 variables_cuantitativas <- fb[sapply(fb, is.numeric)]
@@ -349,7 +384,9 @@ autoplot(pca_result, data = fb, colour = 'black', loadings = TRUE, loadings.labe
 
 ```
 
+
 ### PCA DOS EN UNO
+
 
 ```{r}
 library(FactoMineR)
@@ -372,4 +409,78 @@ list(p1, p2) %>%
 
 ```
 
+
+# Grafica en ggplot2 
+## Graficos en data cruda 
+### Box plot 
+
+
+```{r}
+fb %>% 
+    ggplot(data = ., aes(x = geno, y = hi, fill = riego)) + geom_boxplot() +
+  labs(x= "Genotipos"
+       , y = "Indice de cosecha"
+       , fill= "Tratamiento"
+       , title ="Eficiencia de uso de agua en papa"
+       , subtitle = "Indice de cosecha"
+       , caption = "n= 150") +
+  theme_classic() + 
+  theme(plot.title = element_text(hjust = 0.5))
+  
+
+```
+
+
+## Scater plot 
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+fb %>%
+  ggplot(data = ., aes(x = twue, y = hi, fill = riego)) +
+  geom_point()+
+  geom_smooth(method = lm) + 
+  labs(title = "Eficiencia de uso de agua en papa",
+       subtitle = "Índice de cosecha vs eficiencia de uso de agua en papa",
+       x = "Eficiencia de uso de agua en papa",
+       y = "Índice de cosecha", 
+       color = "Riego",
+       caption = "n = 150") +
+  theme_bw()+ 
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+```
+
+
+### Resumir datos 
+
+```{r}
+modelo <- lm(lfa ~ bloque + riego*geno 
+             , data = fb)
+
+anova (modelo)
+library(agricolae)
+ tukey <- HSD.test(modelo 
+                   , c("geno", "riego")
+                   , group = TRUE)
+
+
+grupos <- tukey_interaccion$groups %>% 
+  rownames_to_column("Tratamientos") %>% 
+  separate(Tratamientos, into = c("riego","geno")
+           , sep = ":")
+```
+
+```{r}
+grupos %>% 
+  ggplot(data = . 
+         , aes(x = geno, y = lfa, fill = riego)) + 
+  geom_col(position = position_dodge2(preserve = "single"))
+
+
+
+```
 
