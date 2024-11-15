@@ -377,7 +377,7 @@ list(p1, p2) %>%
 ### Box plot 
 
 ```{r}
-fb %>% 
+p1 <- fb %>% 
     ggplot(data = ., aes(x = geno, y = hi, fill = riego)) + geom_boxplot() +
   labs(x= "Genotipos"
        , y = "Indice de cosecha"
@@ -387,6 +387,8 @@ fb %>%
        , caption = "n= 150") +
   theme_classic() + 
   theme(plot.title = element_text(hjust = 0.5))
+
+p1
   
 
 ```
@@ -397,7 +399,7 @@ fb %>%
 library(ggplot2)
 library(dplyr)
 
-fb %>%
+p2 <- fb %>%
   ggplot(data = ., aes(x = twue, y = hi, fill = riego)) +
   geom_point()+
   geom_smooth(method = lm) + 
@@ -410,7 +412,7 @@ fb %>%
   theme_bw()+ 
   theme(plot.title = element_text(hjust = 0.5))
 
-
+p2
 ```
 
 ### Resumir datos 
@@ -432,20 +434,96 @@ grupos <- tukey_interaccion$groups %>%
 ```
 
 ```{r}
-grupos %>% 
+p3 <- grupos %>% 
   ggplot(data = . 
          , aes(x = geno, y = lfa, fill = riego)) + 
   geom_col(position = position_dodge2(preserve = "single"))
 
+p3
+```
 
+
+# Imagenes en grids
+```{r}
+plot <- library(cowplot)
+list(p1, p2, p3) %>% 
+  plot_grid(plotlist = . 
+            , ncol = 2
+            , labels = "auto")
+
+plot
+ggsave2(filename = "Plot-01.pdf", units = "cm"
+        , width = 30, height = 15)
+```
+### Insertar grafico como imagen 
+
+```{r}
+# Carga las librerías necesarias
+library(cowplot)
+library(PerformanceAnalytics)
+library(ggplot2)
+
+
+my_data <- fb[, c("lfa", "hi", "leafdw", "wue", "op_84")]
+png("correlation_plot.png")  # Guardamos el gráfico como imagen
+chart.Correlation(my_data, histogram = TRUE, pch = 19)
+dev.off()
+
+# Carga el gráfico de correlación como una imagen en cowplot
+p4 <- ggdraw() + draw_image("correlation_plot.png")
+
+# Organiza los cuatro gráficos en una cuadrícula 2x2
+final_plot <- plot_grid(
+  plotlist = list(p1, p2, p3, p4),
+  ncol = 2,
+  labels = "auto"
+)
+
+print(final_plot)
+
+plot
+ggsave2(filename = "Plot-01.pdf", units = "cm"
+        , width = 30, height = 20)
 
 ```
 
 
+```{r}
+library(tidyverse)
+library(psych)
+p4 <- function() {
+  
+  fb %>% 
+  select_if(is.numeric) %>% 
+ dplyr::select(!c("block")) %>% 
+pairs.panels(x = .
+      , hist.col="blue"
+      , pch = 21
+      , stars = TRUE 
+      , scale = FALSE 
+      , lm = TRUE
+      )
+}
+
+p4
+
+```
+
+```{r}
+library(cowplot)
+
+plot <- list(p1, p2, p3, p4) %>% 
+  plot_grid(plotlist = .
+            , ncol = 2
+            , labels = "auto"
+            )
+
+ggsave2(filename = "plot-01.jpg", units = "cm"
+        , width = 30*2, height = 15*2.5)
+
+include_graphics("plot-01.jpg")
 
 
 
-
-
-
+```
 
